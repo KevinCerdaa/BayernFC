@@ -1,2 +1,3 @@
-# BayernFC
-A website project for the soccer club.
+# ⚽ BayernFC ⚽
+
+Repository for the BayernFC website project.
