@@ -83,6 +83,7 @@ header
 /* BLOQUE DE INFORMACIÓN */
 .cuadro
 {
+    padding: 2%;
     color: white;
     margin: 0 200px 0 200px;
     background: #000E29;
