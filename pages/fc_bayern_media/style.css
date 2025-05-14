@@ -1,0 +1,231 @@
+.mapaContainer, .videoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 35px 0;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Contenedor del mapa con estilo moderno */
+.mapaContainer {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    background-color: #121F38;
+    padding: 20px;
+}
+
+.mapaContainer::before {
+    content: "Allianz Arena";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #DC052D, #C60428);
+    color: white;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-family: "Titles", sans-serif;
+    font-size: 18px;
+    border-bottom-right-radius: 12px;
+    z-index: 10;
+}
+
+.mapaContainer iframe {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    filter: saturate(1.1) contrast(1.05);
+    transition: all 0.4s ease;
+    border: 3px solid rgba(220, 5, 45, 0.2);
+}
+
+.mapaContainer iframe:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 25px rgba(220, 5, 45, 0.2);
+}
+
+/* Estilos mejorados para el contenedor de videos */
+.videoContainer {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.video-container {
+    width: 100%;
+    background-color: #121F38;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+}
+
+.video-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    font-family: "Titles", sans-serif;
+    padding-bottom: 12px;
+}
+
+.video-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, #DC052D, #C60428);
+    border-radius: 2px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(220, 5, 45, 0.2);
+    transition: all 0.3s ease;
+}
+
+.video-wrapper:hover {
+    border-color: rgba(220, 5, 45, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-info {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #DC052D;
+}
+
+.video-info p {
+    color: #f0f0f0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.video-info strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Media queries para responsividad */
+@media only screen and (max-width: 992px) {
+    .mapaContainer iframe {
+        height: 400px;
+    }
+    
+    .mapaContainer::before {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    
+    .video-title {
+        font-size: 22px;
+    }
+    
+    .video-container {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mapaContainer {
+        padding: 15px;
+    }
+    
+    .mapaContainer iframe {
+        height: 350px;
+    }
+    
+    .mapaContainer::before {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .videoContainer {
+        margin: 30px auto;
+    }
+    
+    .video-title {
+        font-size: 20px;
+    }
+    
+    .video-container {
+        padding: 15px;
+    }
+    
+    .video-info {
+        padding: 12px;
+    }
+    
+    .video-info p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .mapaContainer {
+        padding: 10px;
+    }
+    
+    .mapaContainer iframe {
+        height: 300px;
+    }
+    
+    .mapaContainer::before {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    .video-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .video-container {
+        padding: 12px;
+    }
+    
+    .video-info {
+        margin-top: 15px;
+        padding: 10px;
+    }
+    
+    .video-info p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .video-title::after {
+        width: 50px;
+        height: 2px;
+    }
+}

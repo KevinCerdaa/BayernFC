@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Jersey - FC Bayern Múnich</title>
+    <link rel="shortcut icon" href="../../resources/img/favicons/Logo_FCBayern.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="jersey.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="cabecera">
+            <div class="cajaCabecera">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_256/v1741944358/cms/public/images/fcbayern-com/logos/bundesliga/fcb-logo.png" alt="logotypeColours">
+                <h1>FC Bayern München</h1>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="CajaCabecera">
+                <a href="../../index.html">Inicio</a>
+                <a href="../actualidad/index.html">Actualidad</a>
+                <a href="../fc_bayern_media/index.html">FC Bayern MEDIA</a>
+                <a href="../FAQ/index.html">FAQ</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="formulariojerseys.html" class="paginaSeleccionada">Crea tu jersey</a>
+                <a target="_blank" href="https://landbot.online/v3/H-2929920-YR5RGDQ251DOGOSD/index.html">ChatBot</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="containerCuadro">   
+        <div class="cuadro">
+            <div class="tituloPagina">
+                <h2>Personaliza tu jersey</h2>
+                <h3>Local • Visitante • Champions League</h3>
+            </div>
+            
+            <div class="galeriaJerseys">
+                <div class="jersey">
+                    <img src="fotos/bayernlocal.avif" alt="Jersey Local">
+                    <p>Local</p>
+                </div>
+                <div class="jersey">
+                    <img src="fotos/bayernaway.avif" alt="Jersey Visitante">
+                    <p>Visitante</p>
+                </div>
+                <div class="jersey">
+                    <img src="fotos/bayerncl.avif" alt="Jersey Champions League">
+                    <p>Champions League</p>
+                </div>
+            </div>
+            
+            <div class="formularioContainer">
+                <form id="jerseyForm">
+                    <div class="form-section">
+                        <h3>Datos del Jersey</h3>
+                        <div class="input-group">
+                            <label for="talla">Talla del jersey:</label>
+                            <select id="talla" required>
+                                <option value="">Seleccione</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="tipo">Tipo de jersey:</label>
+                            <select id="tipo" required>
+                                <option value="">Seleccione</option>
+                                <option value="Local">Local</option>
+                                <option value="Visitante">Visitante</option>
+                                <option value="CL">Tercero (Champions League)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="nombreJersey">Nombre en el jersey:</label>
+                            <input type="text" id="nombreJersey" maxlength="15">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="numeroJersey">Número:</label>
+                            <input type="number" id="numeroJersey" min="0" max="99" placeholder="1-99">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Datos de Contacto y Envío</h3>
+                        <div class="input-group">
+                            <label for="email">Correo electrónico:</label>
+                            <input type="email" id="email" required placeholder="ejemplo@correo.com">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="telefono">Número de teléfono:</label>
+                            <input type="tel" id="telefono" required placeholder="+52 55 1234 5678">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="direccion">Dirección de envío:</label>
+                            <textarea id="direccion" rows="3" required placeholder="Calle, número, colonia, ciudad, estado, código postal"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="btn-container">
+                        <button type="button" id="generarPDF" onclick="genPDF()">Generar PDF</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Contenedor para el PDF -->
+            <div class="pdfContainer">
+                <iframe id="pdfPreview" title="Vista previa del PDF"></iframe>
+                <a id="downloadBtn" class="download-btn" href="#" download="Jersey_Personalizado.pdf">Descargar PDF</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="partners">
+            <p>PARTNER</p>
+            <div class="imagenesPartners">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_64,dpr_2/v1645702561/cms/public/images/frauen/administration/partner-logos/Telekom.svg" alt="Telekom">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128,dpr_2/v1688631272/cms/public/images/frauen/administration/partner-logos/neu-Adidas.svg" alt="Adidas">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_192/v1699349832/cms/public/images/frauen/administration/partner-logos/Allianz.svg" alt="Allianz">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1/cms/public/images/frauen/administration/partner-logos/Audi.svg" alt="Audi">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1705068393/cms/public/images/frauen/administration/partner-logos/Combination-solid-wh-25-height.svg" alt="Bitpanda">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1719817081/cms/public/images/frauen/administration/partner-logos/Einhell_NEG.svg" alt="Einhell">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_192/v1659965937/cms/public/images/frauen/administration/partner-logos/Hypovereinsbank.svg" alt="HypoVereinsbank">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1659965907/cms/public/images/frauen/administration/partner-logos/Konami.svg" alt="Konami">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1688563568/cms/public/images/frauen/administration/partner-logos/Libertex.svg" alt="Libertex">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_192/v1688563631/cms/public/images/frauen/administration/partner-logos/paulaner__148x22.svg" alt="Paulander">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1693148410/cms/public/images/frauen/administration/partner-logos/Visit_Rwanda_White-03-04.svg" alt="Visit Rwanda">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_64/v1693148377/cms/public/images/frauen/administration/partner-logos/Sap.svg" alt="SAP">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1693148337/cms/public/images/frauen/administration/partner-logos/Saskia.svg" alt="Saskia">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1693148307/cms/public/images/frauen/administration/partner-logos/Tipico.svg" alt="Tipico">
+                <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_192/v1693148261/cms/public/images/frauen/administration/partner-logos/Viesmann_Zeichenfl%C3%A4che_1.svg" alt="Viessmann">
+            </div>
+        </div>
+        <div class="enlaces">
+            <div class="bloqueEnlaces">
+                <h4>Noticias</h4>
+                <a href="#">Boletín de noticias</a>
+                <a href="#">FC Bayern MEDIA</a>
+            </div>
+            <div class="bloqueEnlaces">
+                <h4>Partidos</h4>
+                <a href="#">Clasificación</a>
+                <a href="#">Estadisticas del equipo</a>
+            </div>
+            <div class="bloqueEnlaces">
+                <h4>Equipos</h4>
+                <a href="#">Masculino</a>
+                <a href="#">Esports</a>
+                <a href="#">FC Bayern Leyendas</a>
+                <a href="#">FC Bayern World Squad</a>
+            </div>
+            <div class="bloqueEnlaces">
+                <h4>Online Store</h4>
+                <a href="#">Personaliza tu camisa</a>
+                <a href="#">Tienda oficial</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="https://img.fcbayern.com/image/upload/f_auto/q_auto/w_128/v1/cms/public/images/frauen/administration/fcb-logo.svg" alt="logotypeWhite">
+        </div>
+        <div class="redesSociales">
+            <a href="https://www.facebook.com/FCBayern" target="_blank">
+                <img src="../resources/img/Social/Facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/fcbayern/" target="_blank">
+                <img src="../resources/img/Social/Instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/fcbayern" target="_blank">
+                <img src="../resources/img/Social/YouTube.png" alt="YouTube">
+            </a>
+            <a href="https://www.snapchat.com/add/fcbayernsnaps" target="_blank">
+                <img src="../resources/img/Social/SnapChat.png" alt="Snapchat">
+            </a>
+            <a href="https://twitter.com/FCBayern" target="_blank">
+                <img src="../resources/img/Social/X.png" alt="X">
+            </a>
+            <a href="https://onefootball.com/en/team/fc-bayern-munich-6" target="_blank">
+                <img src="../resources/img/Social/OneFootball.png" alt="OneFootball">
+            </a>
+            <a href="https://www.tiktok.com/@fcbayern" target="_blank">
+                <img src="../resources/img/Social/TikTok.png" alt="TikTok">
+            </a>
+        </div>       
+        <div class="desarrolladora">
+            <p><b>Desarrollada por Kevin Cerda, Leon Marmolejo, José Echavarría</b></p>
+            <p><i>Página Web desarrollada para la materia de Programación Web I</i></p>
+            <p><i>Primavera 2025,  Universidad Politécnica de San Luis Potosí</i></p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar jsPDF
+        const { jsPDF } = window.jspdf;
+
+        function genPDF() {
+            // Validar formulario
+            const tipo = document.getElementById('tipo').value;
+            const talla = document.getElementById('talla').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const direccion = document.getElementById('direccion').value;
+            
+            if (!tipo || !talla || !email || !telefono || !direccion) {
+                alert('Por favor, completa todos los campos obligatorios');
+                return;
+            }
+
+            const nombre = document.getElementById('nombreJersey').value;
+            const numero = document.getElementById('numeroJersey').value;
+
+            // Crear nuevo documento PDF
+            const doc = new jsPDF();
+            
+            // Configuración inicial
+            doc.setFontSize(20);
+            doc.setTextColor(198, 4, 40); // Color rojo del Bayern
+            doc.text('FC Bayern München', 105, 15, { align: 'center' });
+            doc.setTextColor(40);
+            doc.text('Detalles de tu jersey personalizado', 105, 25, { align: 'center' });
+            
+            // Añadir línea divisoria
+            doc.setDrawColor(198, 4, 40);
+            doc.line(20, 30, 190, 30);
+            
+            // Configurar texto normal
+            doc.setFontSize(12);
+            doc.setTextColor(80);
+            
+            // Añadir información del jersey
+            let yPosition = 45;
+            
+            doc.setFont(undefined, 'bold');
+            doc.text('Datos del Jersey:', 20, yPosition);
+            doc.setFont(undefined, 'normal');
+            yPosition += 10;
+            
+            doc.text(`• Tipo: ${tipo}`, 25, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Talla: ${talla}`, 25, yPosition);
+            yPosition += 10;
+            
+            if (nombre) {
+                doc.text(`• Nombre: ${nombre}`, 25, yPosition);
+                yPosition += 10;
+            }
+            
+            if (numero) {
+                doc.text(`• Número: ${numero}`, 25, yPosition);
+                yPosition += 10;
+            }
+            
+            // Añadir información de contacto y envío
+            yPosition += 5; // Espacio adicional
+            doc.setFont(undefined, 'bold');
+            doc.text('Datos de Contacto y Envío:', 20, yPosition);
+            doc.setFont(undefined, 'normal');
+            yPosition += 10;
+            
+            doc.text(`• Correo electrónico: ${email}`, 25, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Teléfono: ${telefono}`, 25, yPosition);
+            yPosition += 10;
+            
+            // Dividir la dirección en líneas si es muy larga
+            const direccionLines = doc.splitTextToSize(`• Dirección: ${direccion}`, 170);
+            doc.text(direccionLines, 25, yPosition);
+            yPosition += 10 * direccionLines.length;
+            
+            // Añadir mensaje final
+            doc.setFontSize(14);
+            doc.setTextColor(198, 4, 40); // Color rojo del Bayern
+            doc.text('¡Gracias por tu pedido!', 105, yPosition + 20, { align: 'center' });
+            
+            // Generar URL para el iframe
+            const pdfData = doc.output('datauristring');
+            const pdfPreview = document.getElementById('pdfPreview');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Mostrar el PDF en el iframe
+            pdfPreview.src = pdfData;
+            pdfPreview.style.display = 'block';
+            
+            // Configurar botón de descarga
+            downloadBtn.href = pdfData;
+            downloadBtn.style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>

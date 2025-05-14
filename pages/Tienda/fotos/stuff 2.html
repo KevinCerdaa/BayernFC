@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARMA TU JERSEY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .galeria {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .imagen img {
+            width: 200px;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+        select, input, textarea {
+            padding: 8px;
+            margin-top: 5px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        #pdfPreview {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        .download-btn {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            background-color: #218838;
+        }
+        .form-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .form-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crear Archivos PDF</h1>
+    <br>
+    
+    <h1>Personaliza tu jersey</h1>
+    <h2>Local • Visitante • Champions League</h2>
+    <br/>
+    <div class="galeria">
+        <div class="imagen">
+            <img src="fotos/bayernlocal.avif" alt="Local">
+        </div>
+        <div class="imagen">
+            <img src="fotos/bayernaway.avif" alt="Away">
+        </div>
+        <div class="imagen">
+            <img src="fotos/bayerncl.avif" alt="CL">
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <form id="jerseyForm">
+        <div class="form-section">
+            <h3>Datos del Jersey</h3>
+            <label for="talla">Talla del jersey:
+                <select id="talla" required>
+                    <option value="">Seleccione</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+            </label>
+
+            <label for="tipo">Tipo de jersey:
+                <select id="tipo" required>
+                    <option value="">Seleccione</option>
+                    <option value="Local">Local</option>
+                    <option value="Visitante">Visitante</option>
+                    <option value="CL">Tercero (Champions League)</option>
+                </select>
+            </label>
+
+            <label for="nombreJersey">Nombre en el jersey:
+                <input type="text" id="nombreJersey" maxlength="15">
+            </label>
+
+            <label for="numeroJersey">Número:
+                <input type="number" id="numeroJersey" min="0" max="99" placeholder="1-99">
+            </label>
+        </div>
+
+        <div class="form-section">
+            <h3>Datos de Contacto y Envío</h3>
+            <label for="email">Correo electrónico:
+                <input type="email" id="email" required placeholder="ejemplo@correo.com">
+            </label>
+
+            <label for="telefono">Número de teléfono:
+                <input type="tel" id="telefono" required placeholder="+52 55 1234 5678">
+            </label>
+
+            <label for="direccion">Dirección de envío:
+                <textarea id="direccion" rows="3" required placeholder="Calle, número, colonia, ciudad, estado, código postal"></textarea>
+            </label>
+        </div>
+
+        <a href="javascript:genPDF()">Generar PDF</a>
+    </form>
+
+    <!-- Contenedor para el PDF -->
+    <iframe id="pdfPreview" title="Vista previa del PDF"></iframe>
+    <a id="downloadBtn" class="download-btn" href="#" download="Jersey_Personalizado.pdf">Descargar PDF</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Inicializar jsPDF
+        const { jsPDF } = window.jspdf;
+
+        function genPDF() {
+            // Validar formulario
+            const tipo = document.getElementById('tipo').value;
+            const talla = document.getElementById('talla').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const direccion = document.getElementById('direccion').value;
+            
+            if (!tipo || !talla || !email || !telefono || !direccion) {
+                alert('Por favor, completa todos los campos obligatorios');
+                return;
+            }
+
+            const nombre = document.getElementById('nombreJersey').value;
+            const numero = document.getElementById('numeroJersey').value;
+
+            // Crear nuevo documento PDF
+            const doc = new jsPDF();
+            
+            // Configuración inicial
+            doc.setFontSize(20);
+            doc.setTextColor(40);
+            doc.text('Detalles de tu jersey personalizado', 105, 20, { align: 'center' });
+            
+            // Añadir línea divisoria
+            doc.setDrawColor(200);
+            doc.line(20, 25, 190, 25);
+            
+            // Configurar texto normal
+            doc.setFontSize(12);
+            doc.setTextColor(80);
+            
+            // Añadir información del jersey
+            let yPosition = 40;
+            
+            doc.text('Datos del Jersey:', 20, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Tipo: ${tipo}`, 25, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Talla: ${talla}`, 25, yPosition);
+            yPosition += 10;
+            
+            if (nombre) {
+                doc.text(`• Nombre: ${nombre}`, 25, yPosition);
+                yPosition += 10;
+            }
+            
+            if (numero) {
+                doc.text(`• Número: ${numero}`, 25, yPosition);
+                yPosition += 10;
+            }
+            
+            // Añadir información de contacto y envío
+            yPosition += 5; // Espacio adicional
+            doc.text('Datos de Contacto y Envío:', 20, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Correo electrónico: ${email}`, 25, yPosition);
+            yPosition += 10;
+            
+            doc.text(`• Teléfono: ${telefono}`, 25, yPosition);
+            yPosition += 10;
+            
+            // Dividir la dirección en líneas si es muy larga
+            const direccionLines = doc.splitTextToSize(`• Dirección: ${direccion}`, 170);
+            doc.text(direccionLines, 25, yPosition);
+            yPosition += 10 * direccionLines.length;
+            
+            // Añadir mensaje final
+            doc.setFontSize(14);
+            doc.setTextColor(40);
+            doc.text('¡Gracias por tu pedido!', 105, yPosition + 20, { align: 'center' });
+            
+            // Generar URL para el iframe
+            const pdfData = doc.output('datauristring');
+            const pdfPreview = document.getElementById('pdfPreview');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Mostrar el PDF en el iframe
+            pdfPreview.src = pdfData;
+            pdfPreview.style.display = 'block';
+            
+            // Configurar botón de descarga
+            downloadBtn.href = pdfData;
+            downloadBtn.style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>

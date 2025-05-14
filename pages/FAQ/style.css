@@ -1,0 +1,92 @@
+/* Estilos específicos para la página de FAQ */
+
+/* Título principal de la sección */
+.titulo-seccion {
+    margin-bottom: 25px;
+}
+
+.titulo-seccion h3 {
+    color: white;
+    font-family: 'Titles', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de preguntas y respuestas */
+.contenido-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo para cada pregunta individual */
+.pregunta {
+    background-color: #121F38;
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.pregunta:hover {
+    transform: scale(1.01);
+}
+
+.pregunta h4 {
+    color: #DC052D;
+    font-family: 'Titles', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.pregunta p {
+    color: white;
+    font-family: 'Normal', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Media queries para diseño responsive */
+@media only screen and (max-width: 992px) {
+    .pregunta {
+        padding: 15px;
+    }
+    
+    .pregunta h4 {
+        font-size: 16px;
+    }
+    
+    .pregunta p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo-seccion h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .contenido-faq {
+        gap: 15px;
+    }
+    
+    .pregunta {
+        padding: 12px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .titulo-seccion h3 {
+        font-size: 18px;
+    }
+    
+    .pregunta h4 {
+        font-size: 15px;
+    }
+    
+    .pregunta p {
+        font-size: 13px;
+    }
+}

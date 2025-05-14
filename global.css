@@ -8,138 +8,158 @@
     src: url(fonts/Outfit/Outfit-VariableFont_wght.ttf);
 }
 
-*
-{
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
-h1, h2, h3, h4, h5, h6
-{
+
+h1, h2, h3, h4, h5, h6 {
     font-family: titles;
 }
-body
-{
+
+body {
     font-family: Normal;
     background-color: #00091A;
+    overflow-x: hidden;
 }
 
 /* CABECERA GENERAL */
-header
-{
+header {
     width: 100%;
 }
+
 .cabecera {
     background: #DC052D;
     display: flex;
     align-items: center; 
     justify-content: flex-start;
-    padding: 15px 15px 15px 215px;
-    height: 65px;
+    padding: 15px 10vw;
+    height: auto;
+    min-height: 65px;
     color: white;
     font-family: "Titles", sans-serif;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 14px;
 }
+
 .cajaCabecera {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.cabecera img
-{
-    padding: 0 5px 0 5px;
-    width: 65px;
+.cabecera img {
+    width: 50px;
+    height: auto;
 }
+
+.cabecera h1 {
+    margin-left: 15px;
+    font-size: 1.5rem;
+}
+
 .nav {
     background: #C60428;
-    padding: 15px;
+    padding: 10px 10vw;
 }
+
 .nav .CajaCabecera {
     display: flex;
     flex-direction: row; 
-    justify-content: center; 
+    justify-content: flex-start; 
     align-items: center; 
     flex-wrap: wrap;
-    gap: 15px;
 }
-.nav a 
-{
+
+.nav a {
     font-family: "Normal", sans-serif;
     color: white;
     text-decoration: none;
-    padding: 0 10px; 
+    padding: 8px 10px;
+    margin: 5px 0;
     transition: text-decoration 0.3s ease-in-out;
 }
-.paginaSeleccionada 
-{
+
+.paginaSeleccionada {
     font-family: normal;
     font-weight: bold;
 }
-.nav a:hover 
-{
+
+.nav a:hover {
     text-decoration: underline solid 2px white;
 }
 
 /* BLOQUE DE INFORMACIÓN */
-.cuadro
-{
-    padding: 2%;
+.containerCuadro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cuadro {
+    width: 80%;
+    max-width: 1200px;
+    padding: 3%;
     color: white;
-    margin: 0 200px 0 200px;
     background: #000E29;
 }
 
 /* FOOTER GENERAL */
-footer
-{
+footer {
     background: #DC052D;
-    padding: 50px 500px 50px 500px;
+    padding: 5vh 10vw;
+    width: 100%;
 }
-.partners p
-{
+
+.partners p {
     font-family: titles;
     font-weight: 800;
     color: white;
     text-align: center;
     font-size: 24px;
 }
-.imagenesPartners img
-{
+
+.imagenesPartners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.imagenesPartners img {
     width: 70px;
     height: auto;
-    padding: 15px;
-    flex-flow: row;
+    margin: 10px;
     transition: transform 0.5s ease;
 }
-.imagenesPartners img:hover
-{
+
+.imagenesPartners img:hover {
     transform: scale(1.20);
 }
-.imagenesPartners
-{
-    display: flexbox;
-    align-items: center;
-}
-.enlaces
-{
-    margin: 100px 0 0 0;
-    display: flex;
-    flex-flow: wrap;
-    align-self: center;
 
+.enlaces {
+    margin: 50px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
-.bloqueEnlaces
-{
+
+.bloqueEnlaces {
     margin: 15px;
+    min-width: 150px;
 }
-.bloqueEnlaces h4
-{
+
+.bloqueEnlaces h4 {
     font-family: titles;
     font-weight: 600;
     color: white;
 }
-.bloqueEnlaces a
-{
+
+.bloqueEnlaces a {
     font-family: Normal;
     font-weight: 50;
     color: white;
@@ -147,10 +167,11 @@ footer
     display: block;
     padding: 15px 0 0 0;
 }
-.bloqueEnlaces a:hover
-{
+
+.bloqueEnlaces a:hover {
     text-decoration: underline solid 2px white;
 }
+
 .logo {
     display: flex;           
     justify-content: center; 
@@ -158,23 +179,161 @@ footer
     margin: 30px auto;       
     width: 100%;           
 }
+
 .logo img {
-    width: 100px;       
+    width: 100px;
+    height: auto;
     display: block; 
 }
+
 .redesSociales {
     display: flex;
     margin: 50px 0;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
-    justify-content: center; /* Centra horizontalmente los iconos */
-    gap: 100px; /* Espacio uniforme entre cada icono */
+    justify-content: center;
+    gap: 30px;
 }
+
 .redesSociales img {
     height: 35px;
+    width: auto;
 }
-.desarrolladora
-{
+
+.desarrolladora {
     color: rgb(255, 154, 154);
     text-align: center;
+}
+
+/* Media queries para responsive */
+@media only screen and (max-width: 1200px) {
+    .cuadro {
+        width: 90%;
+    }
+    
+    .imagenesPartners img {
+        width: 60px;
+        margin: 8px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .cabecera {
+        padding: 15px 5vw;
+    }
+    
+    .nav {
+        padding: 10px 5vw;
+    }
+    
+    .nav .CajaCabecera {
+        justify-content: center;
+    }
+    
+    .nav a {
+        text-align: center;
+    }
+    
+    .cuadro {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .enlaces {
+        gap: 10px;
+    }
+    
+    .bloqueEnlaces {
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cabecera {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .cajaCabecera {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .cabecera img {
+        margin-bottom: 10px;
+    }
+    
+    .cabecera h1 {
+        margin-left: 0;
+        font-size: 1.2rem;
+    }
+    
+    .nav {
+        padding: 5px;
+    }
+    
+    .nav a {
+        padding: 8px 5px;
+        font-size: 0.9rem;
+    }
+    
+    .cuadro {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .redesSociales {
+        gap: 15px;
+    }
+    
+    .redesSociales img {
+        height: 30px;
+    }
+    
+    .imagenesPartners img {
+        width: 50px;
+        margin: 5px;
+    }
+    
+    .partners p {
+        font-size: 20px;
+    }
+    
+    .logo img {
+        width: 80px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .cabecera h1 {
+        font-size: 1rem;
+    }
+    
+    .nav a {
+        font-size: 0.8rem;
+        padding: 6px 4px;
+    }
+    
+    .cuadro {
+        padding: 10px;
+    }
+    
+    .bloqueEnlaces {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    
+    .bloqueEnlaces h4 {
+        margin-top: 15px;
+    }
+    
+    .desarrolladora {
+        font-size: 0.8rem;
+    }
+    
+    .imagenesPartners img {
+        width: 40px;
+    }
 }

@@ -1,0 +1,141 @@
+/* Estilos específicos para la página del formulario de blog */
+/* Se asume que global.css ya está vinculado */
+
+/* Estilos para el título del blog */
+.tituloBlog {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.tituloBlog h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.tituloBlog p {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+/* Estilos para la caja de comentarios */
+.caja-comentarios {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.contenedor {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#cajablog, #caja {
+    background-color: #121F38;
+    border-radius: 15px;
+    padding: 25px;
+    width: 45%;
+    min-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cajablog h4, #caja h4 {
+    font-family: titles;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+    border-bottom: 1px solid #DC052D;
+    padding-bottom: 10px;
+}
+
+#cajablog p {
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Estilos para los inputs */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: #3d475a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: normal;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+input[type="text"]:hover, textarea:hover {
+    background-color: #4a566b;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #DC052D;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="button"] {
+    background-color: #C60428;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: normal;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #DC052D;
+}
+
+/* Estilos para la caja de contenido de comentarios */
+.contenido-caja {
+    color: white;
+    min-height: 100px;
+}
+
+/* Media queries para responsive */
+@media only screen and (max-width: 1200px) {
+    #cajablog, #caja {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #cajablog, #caja {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .tituloBlog h3 {
+        font-size: 20px;
+    }
+    
+    .tituloBlog p {
+        font-size: 14px;
+    }
+    
+    input[type="button"] {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    #cajablog, #caja {
+        padding: 15px;
+    }
+    
+    input[type="text"], textarea {
+        padding: 10px;
+    }
+}
