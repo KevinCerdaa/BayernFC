@@ -141,70 +141,54 @@ body
 }
 
 /* Boletín de noticias */
-.boletinNoticias
-{
-    margin: 20px 0;
-    background-color: #121F38;
-    padding: 25px;
-    border-radius: 15px;
-}
-
-.negritas
-{
-    font-size: 24px;
-    font-weight: 1000;
-    margin: 0 0 15px 0;
-}
-
-.boletinNoticias form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.boletinNoticias input[type=email]
-{
-    width: 70%;
-    height: 40px;
-    padding: 1px 10px;
+.boletinNoticias input[type=email] {
+    width: 100%;
+    max-width: 500px;
+    height: 45px;
+    padding: 5px 15px;
     color: white;
-    font-size: 18px;
     font-family: normal;
     font-weight: 400;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid transparent;
+    border-radius: 8px;
     background-color: #3d475a;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
-.boletinNoticias input[type=email]:hover
-{
+.boletinNoticias input[type=email]:hover,
+.boletinNoticias input[type=email]:focus {
     background-color: #4a566b;
+    border-color: #DC052D;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(220, 5, 45, 0.2);
 }
 
-.boletinNoticias input[type=submit]
-{
+.boletinNoticias input[type=submit] {
     color: white;
     font-family: normal;
-    font-weight: 1000;
-    width: 25%;
-    height: 40px;
+    font-weight: 700;
+    width: 120px;
+    height: 45px;
     border: none;
-    border-radius: 5px;
-    background-color: #C60428; 
+    border-radius: 8px;
+    background-color: #C60428;
     cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
 }
 
-.boletinNoticias input[type=submit]:hover
-{
+.boletinNoticias input[type=submit]:hover {
     background-color: #e7193f;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(220, 5, 45, 0.4);
 }
 
-.boletinNoticias p
-{
+.boletinNoticias p {
     text-align: justify;
-    margin-top: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d0d0d0;
 }
 
 /* Media queries para responsive */
