@@ -141,6 +141,37 @@ body
 }
 
 /* Boletín de noticias */
+.boletinNoticias {
+    margin: 30px 5px;
+    background-color: #121F38;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.boletinNoticias:hover {
+    transform: translateY(-5px);
+}
+
+.negritas {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.negritas::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background-color: #DC052D;
+    border-radius: 2px;
+}
 .boletinNoticias input[type=email] {
     width: 100%;
     max-width: 500px;
